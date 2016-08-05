@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+Group Members:
+    Elijah Renaud #991364626
+    Danella Olsen #991369845
+-->
+<html>
+    <head>
+        <title>Main Menu</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Style Sheets-->
+        <link rel="stylesheet" href="_CSS/main.css">
+        <link rel="stylesheet" href="_CSS/main_desktop.css">
+        <link rel="stylesheet" href="_CSS/main_mobile.css">
+        <!--JQuery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+        <!--JQuery Mobile-->
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    </head>
+    <body>
+        <!--Page One - Main-->
+        <div data-role="page" id="pageone">
+            <div class="mTitle" id="mTitle"></div>
+            <a id="mBtn" class="ui-btn ui-corner-all" href="#pagetwo" data-transition="flip">Play</a>
+            <a id="mBtn" class="ui-btn ui-corner-all">Scores</a>
+        </div>
+            
+        <!--Page Two - Enter Name-->
+        <div data-role="page" id="pagetwo">
+            <h2 id="ready">Ready?</h2>
+            
+            <div data-role="fieldcontain" id="mNameInput">
+                <label for="mTxtBoxName" id="mLblName">Name: </label>
+                <input type="text" name="mTxtBoxName" id="mTxtBoxName" value=""/>
+            </div>
+            
+            <a id="mBtn" class="ui-btn ui-corner-all" href="#pageone" data-transition="flip">Back</a>
+        </div>
+    </body>
+</html>
