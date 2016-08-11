@@ -1,0 +1,24 @@
+{
+    "events": [
+      {
+        "event":"tap",
+        "transition":"flip",
+        "reverse": "false"
+      },
+      {
+        "event":"taphold",
+        "transition":"pop",
+        "reverse": "false"
+      },
+      {      
+        "event":"swiperight",
+        "transition":"slide",
+        "reverse": "true"
+      },
+      {      
+        "event":"swipeleft",
+        "transition":"slide",
+        "reverse": "false"
+      }
+    ]
+}
