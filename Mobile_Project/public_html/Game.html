@@ -4,12 +4,102 @@ Student Number: 991364626-->
 
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Play</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Style Sheets-->
+        <link rel="stylesheet" href="_CSS/main.css">
+        <link rel="stylesheet" href="_CSS/main_desktop.css">
+        <link rel="stylesheet" href="_CSS/main_mobile.css">
+        <!--JQuery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+        <!--JQuery Mobile-->
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <script>
+            var width;
+            var height;
+
+
+            function center(element, sub1, sub2) {
+
+                width = $(window).width() / 2 - sub1;
+                height = $(window).height() / 2 - sub2;
+
+                element.css({"margin-left": width, "margin-top": height});
+
+            }
+
+            function playAudio(filename) {
+                var sound = document.createElement('audio');
+                sound.setAttribute('src', filename);
+                sound.setAttribute('autoplay', 'autoplay');
+                sound.play();
+            }
+
+            $(document).ready(function () {
+
+
+
+
+                center($("#startBtn"), 100, 100);
+
+                $("#start").click(function () {
+                    $("#countdown").text("");
+                    countDown("#countdown", 3);
+                });
+
+
+            });
+
+            $(window).resize(function () {
+                center($("#startBtn"), 100, 100);
+            });
+            function countDown(element, length) {
+                $element = $(element);
+                var num = length;
+                var timer = setInterval(function () {
+                    if (num < 1) {
+                        clearTimeout(timer);
+                        $element.text("GO!");
+                        playAudio('_sounds\\beep2.wav');
+                        return;
+                    }
+                    playAudio('_sounds\\beep1.wav');
+                    $element.text(num--);
+
+
+                }, 1000);
+            }
+
+
+        </script>
+
+        <div data-role="page" id="pageone">
+            <div id="startBtn">
+                <a id="start" class="ui-btn round-centre" href="#game1" data-transition="flip">Play</a>
+            </div>
+        </div>
+
+        <!--Page Two - Enter Name-->
+        <div data-role="page" id="game1">
+
+            <div id="game1Div" data-role="fieldcontain">
+                <h1 id="countdown">COUNTDOWN</h1>
+            </div>
+
+
+        </div>
+
+        <div data-role="page" id="game2">
+
+            <div data-role="fieldcontain">
+
+            </div>
+
+
+        </div>
     </body>
 </html>
