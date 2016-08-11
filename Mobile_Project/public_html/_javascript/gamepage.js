@@ -38,35 +38,51 @@ $(document).ready(function () {
         $("#countdown").text("");
         center($("#countdown"), 100, 100);
         countDown("#countdown", 3);
-        startgame();
+
     });
 
     function startgame() {
+        round();
+    }
+    function round() {
+        $(":mobile-pagecontainer").pagecontainer("change", "#game2", {transition: "pop"});
 
+        $("#game2").css({"background-color": randomColor()});
     }
 
+    function countDown(element, length) {
+        $element = $(element);
+        var num = length;
+        var timer = setInterval(function () {
+            if (num == 0) {
+                clearTimeout(timer);
+                $element.text("GO!");
+                playAudio('_sounds\\beep2.wav');
+                startgame();
+                return;
+            } 
+            playAudio('_sounds\\beep1.wav');
+            $element.text(num--);
+
+
+        }, 1000);
+    }
 
 });
+
+
 
 $(window).resize(function () {
     center($("#startBtn"), 100, 100);
     center($("#countdown"), 100, 100);
 });
-function countDown(element, length) {
-    $element = $(element);
-    var num = length;
-    var timer = setInterval(function () {
-        if (num < 1) {
-            clearTimeout(timer);
-            $element.text("GO!");
-            playAudio('_sounds\\beep2.wav');
-            return;
-        }
-        playAudio('_sounds\\beep1.wav');
-        $element.text(num--);
 
 
-    }, 1000);
+/*
+ * Generates a random color
+ * Returns: Hex for color
+ */
+function randomColor() {
+    var color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    return color;
 }
-
-
