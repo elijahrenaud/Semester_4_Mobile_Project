@@ -42,12 +42,25 @@ $(document).ready(function () {
     });
 
     function startgame() {
-        round();
+        var page = "#game1";
+        var success = true;
+        while(success){
+            page = (page == "#game1")? "#game2" : "#game1";
+            success = round(page);
+            
+            
+           
+        }
     }
-    function round() {
-        $(":mobile-pagecontainer").pagecontainer("change", "#game2", {transition: "pop"});
+    
+    
+    function round(page) {
+        $(":mobile-pagecontainer").pagecontainer("change", page, {transition: "pop"});
 
-        $("#game2").css({"background-color": randomColor()});
+        $(page).css({"background-color": randomColor()});
+        
+        return false;
+        
     }
 
     function countDown(element, length) {
