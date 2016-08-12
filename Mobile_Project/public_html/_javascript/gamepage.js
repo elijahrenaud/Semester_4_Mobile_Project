@@ -2,6 +2,10 @@
 var width;
 var height;
 
+var events = [];
+var transitions = [];
+var reverse = [];
+
 /*
  * Function for centering element on page
  * Params:
@@ -31,8 +35,25 @@ function playAudio(filename) {
 }
 
 $(document).ready(function () {
+     center($("#startBtn"), 100, 100);
+    $.ajax({
+        type: "GET",
+        url: "_xml/mobile_events.xml",
+        dataType: "xml",
+        success: storevalues
+    });
 
-    center($("#startBtn"), 100, 100);
+    function storevalues(xml) {
+
+        $(xml).find("event").each(function () {
+            events.push($(this).attr("name"));
+            transitions.push($(this).attr("transition"));
+            reverse.push($(this).attr("reverse"));
+           
+        });
+
+
+    }
 
     $("#start").click(function () {
         $("#countdown").text("");
@@ -44,24 +65,39 @@ $(document).ready(function () {
     function startgame() {
         var page = "#game1";
         var success = true;
-        while(success){
-            page = (page == "#game1")? "#game2" : "#game1";
+        while (success) {
+            page = (page == "#game1") ? "#game2" : "#game1";
             success = round(page);
-            
-            
-           
+
+
+
         }
+        
+       
     }
-    
-    
+
+
     function round(page) {
         $(":mobile-pagecontainer").pagecontainer("change", page, {transition: "pop"});
 
         $(page).css({"background-color": randomColor()});
+        var index = Math.floor((Math.random() * events.length));
+        var $canvas = $(page).find(".imgDisp");
+        center($canvas, 100, 100);
         
-        return false;
+       
         
+        var ctx = $canvas.getContext("2d");
+        var imageObj = new Image();
+        imageObj.src = "_images/" + events[index] + ".png";
+        alert(index + " " + imageObj);
+        ctx.drawImage(imageObj, 0 , 0);
+     
+       
+       //$canvas.attr("src","_images/" + events[index] + ".png");
+
     }
+
 
     function countDown(element, length) {
         $element = $(element);
@@ -73,7 +109,7 @@ $(document).ready(function () {
                 playAudio('_sounds\\beep2.wav');
                 startgame();
                 return;
-            } 
+            }
             playAudio('_sounds\\beep1.wav');
             $element.text(num--);
 
@@ -82,12 +118,10 @@ $(document).ready(function () {
     }
 
 });
-
-
-
 $(window).resize(function () {
     center($("#startBtn"), 100, 100);
     center($("#countdown"), 100, 100);
+    center($(page).find(".imgDisp"), 100, 100);
 });
 
 
