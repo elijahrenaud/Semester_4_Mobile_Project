@@ -1,4 +1,4 @@
-var transitions = ["fade", "flip", ]
+
 var width;
 var height;
 

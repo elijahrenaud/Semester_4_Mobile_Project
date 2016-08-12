@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+    <event name="tap" transition="flip" reverse="false"></event>
+    <event name="taphold" transition="pop" reverse="false"></event>
+    <event name="swiperight" transition="slide" reverse="true"></event>
+    <event name="swipeleft" transition="slide" reverse="false"></event>
+</data>
