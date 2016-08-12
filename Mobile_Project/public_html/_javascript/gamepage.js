@@ -6,6 +6,8 @@ var events = [];
 var transitions = [];
 var reverse = [];
 
+var lastEvent = "";
+
 /*
  * Function for centering element on page
  * Params:
@@ -22,6 +24,14 @@ function center(element, sub1, sub2) {
 
 }
 
+function eventsToString() {
+    var list = "";
+    for (event in events) {
+        list += events[event] + " ";
+    }
+    return list;
+}
+
 /*
  * Function for playing audio
  * Param:
@@ -35,7 +45,7 @@ function playAudio(filename) {
 }
 
 $(document).ready(function () {
-     center($("#startBtn"), 100, 100);
+    center($("#startBtn"), 100, 100);
     $.ajax({
         type: "GET",
         url: "_xml/mobile_events.xml",
@@ -43,13 +53,19 @@ $(document).ready(function () {
         success: storevalues
     });
 
+
+    $(document).on(eventsToString() + " click", function () {
+       lastEvent = event.type + "";
+       alert(event.type);
+
+    });
     function storevalues(xml) {
 
         $(xml).find("event").each(function () {
             events.push($(this).attr("name"));
             transitions.push($(this).attr("transition"));
             reverse.push($(this).attr("reverse"));
-           
+
         });
 
 
@@ -63,39 +79,61 @@ $(document).ready(function () {
     });
 
     function startgame() {
-        var page = "#game1";
+        var page = "game1";
         var success = true;
         while (success) {
-            page = (page == "#game1") ? "#game2" : "#game1";
+            page = (page == "game1") ? "game2" : "game1";
             success = round(page);
-
-
-
+            
         }
-        
-       
+
+
     }
 
 
     function round(page) {
-        $(":mobile-pagecontainer").pagecontainer("change", page, {transition: "pop"});
+        $(":mobile-pagecontainer").pagecontainer("change", "#" + page, {transition: "pop"});
 
-        $(page).css({"background-color": randomColor()});
+        $("#" + page).css({"background-color": randomColor()});
         var index = Math.floor((Math.random() * events.length));
-        var $canvas = $(page).find(".imgDisp");
-        center($canvas, 100, 100);
-        
-       
-        
-        var ctx = $canvas.getContext("2d");
-        var imageObj = new Image();
-        imageObj.src = "_images/" + events[index] + ".png";
-        alert(index + " " + imageObj);
-        ctx.drawImage(imageObj, 0 , 0);
-     
-       
-       //$canvas.attr("src","_images/" + events[index] + ".png");
 
+        drawImage(page, index);
+        lastEvent = "";
+       
+        var interval = setInterval(function () {           
+            //TODO: Check event to see if it matches randomly selected event
+           
+            if ("click" == lastEvent) {
+                $(":mobile-pagecontainer").pagecontainer("change", "#game1", {transition: "pop"});
+                clearInterval(interval);
+                return true;
+            } else {
+                return true;
+            }
+            
+          
+           
+          
+        }, 1000);
+
+
+
+
+    }
+
+    function drawImage(page, index) {
+        var canvas = document.getElementById(page + "Canvas");
+
+        var ctx = canvas.getContext("2d");
+        var imageObj = new Image();
+        imageObj.onload = function () {
+            imageObj.width = imageObj.width * .22;
+            imageObj.height = imageObj.height * .22;
+            ctx.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height);
+        };
+
+        center($("canvas"), 70, 100);
+        imageObj.src = "_images/" + events[index] + ".png";
     }
 
 
@@ -121,7 +159,7 @@ $(document).ready(function () {
 $(window).resize(function () {
     center($("#startBtn"), 100, 100);
     center($("#countdown"), 100, 100);
-    center($(page).find(".imgDisp"), 100, 100);
+    center($("canvas"), 70, 100);
 });
 
 
