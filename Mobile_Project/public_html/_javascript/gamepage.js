@@ -54,11 +54,6 @@ $(document).ready(function () {
     });
 
 
-    $(document).on(eventsToString() + " click", function () {
-       lastEvent = event.type + "";
-       alert(event.type);
-
-    });
     function storevalues(xml) {
 
         $(xml).find("event").each(function () {
@@ -79,52 +74,47 @@ $(document).ready(function () {
     });
 
     function startgame() {
-        var page = "game1";
-        var success = true;
-        while (success) {
-            page = (page == "game1") ? "game2" : "game1";
-            success = round(page);
-            
-        }
-
-
+        $("#countdown").remove();
+        round("game2", "pop", false);
     }
 
 
-    function round(page) {
-        $(":mobile-pagecontainer").pagecontainer("change", "#" + page, {transition: "pop"});
+    function round(page, trans, rever) {
+        // alert(rever);
+
+    
+         $.mobile.pageContainer.pagecontainer("change", "#" + page, {
+            reverse: rever, 
+            transition: trans
+        });
+
 
         $("#" + page).css({"background-color": randomColor()});
         var index = Math.floor((Math.random() * events.length));
 
         drawImage(page, index);
         lastEvent = "";
-       
-        var interval = setInterval(function () {           
-            //TODO: Check event to see if it matches randomly selected event
-           
-            if ("click" == lastEvent) {
-                $(":mobile-pagecontainer").pagecontainer("change", "#game1", {transition: "pop"});
-                clearInterval(interval);
-                return true;
-            } else {
-                return true;
-            }
-            
-          
-           
-          
-        }, 1000);
 
+        var timeout = setTimeout(function () {
+            console.log("GAME OVER");
+            clearTimeout(timeout);
 
+        }, 5000);
+        $(document).one(events[index], function () {
 
+            clearTimeout(timeout);
+            console.log(events[index] + " REVERSE:" + reverse[index]);
 
+            round((page == "game1") ? "game2" : "game1", transitions[index], reverse[index]);
+
+        });
     }
 
     function drawImage(page, index) {
         var canvas = document.getElementById(page + "Canvas");
 
         var ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         var imageObj = new Image();
         imageObj.onload = function () {
             imageObj.width = imageObj.width * .22;
