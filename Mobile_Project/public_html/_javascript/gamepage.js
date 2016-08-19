@@ -84,13 +84,13 @@ $(document).ready(function () {
 
     function startgame() {
         score = 0;
-        
+
         round("game2", "pop", false);
     }
     var index;
 
     function round(page, trans, rever) {
-        $("#"+page+"Score").text(score);
+        $("#" + page + "Score").text(score);
         $.mobile.pageContainer.pagecontainer.reverse = rever;
 
         $.mobile.pageContainer.pagecontainer("change", "#" + page, {
@@ -103,15 +103,23 @@ $(document).ready(function () {
 
         drawImage(page, index);
         lastEvent = "";
-
+        $("#"+page+"Timer").circletimer({
+            onComplete: function () {
+                failure();
+            },
+            timeout: 5000
+        });
+        
+       $("#"+page+"Timer").circletimer("start");
+/*
         var timeout = setTimeout(function () {
             failure(timeout);
 
         }, 2000);
-
+*/
         $(document).one(events[index], function () {
             //event.stopImmediatePropagation();
-            success(timeout, page);
+            success( page);
 
         });
         /*
@@ -158,9 +166,10 @@ $(document).ready(function () {
          */
     }
 
-    function success(timer, page) {
+    function success(page) {
         ++score;
-        clearTimeout(timer);
+       // clearTimeout(timer);
+       $("#"+page+"Timer").circletimer("stop");
         playAudio('_sounds\\beep1.wav');
         round((page == "game1") ? "game2" : "game1", transitions[index], reverse[index]);
     }
