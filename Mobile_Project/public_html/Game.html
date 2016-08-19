@@ -19,22 +19,35 @@ Student Number: 991369845-->
         <!--JQuery Mobile-->
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+        <script src="jquery.min.js"></script>
+        <script src="dist/circletimer.min.js"></script>
+        <link href="dist/circletimer.css" rel="stylesheet">
+
     </head>
     <body>
-        <script src="_javascript/gamepage.js"> </script>
+        <script src="_javascript/gamepage.js"></script>
 
         <div data-role="page" id="pageone">
             <div id="startBtn">
-                <a id="start" class="ui-btn round-centre" href="#game1" data-transition="flip">Play</a>
+                <a id="start" class="ui-btn round-centre" href="#starting
+                   " data-transition="flip">Play</a>
             </div>
         </div>
 
-        <!--Page Two - Enter Name-->
-        <div data-role="page" id="game1">
-
-            <div id="game1Div" data-role="fieldcontain">
+        <div data-role="page" id="starting">
+            <div data-role="fieldcontain">
                 <h1 id="countdown"></h1>
-                <canvas class=canvas" id="game1Canvas"></canvas>
+            </div>
+        </div>
+        <div data-role="page" id="game1" >
+            <div data-role="header" data-fullscreen="true" class="fixed-header" data-id="main-header">
+                <p id="game1Score" class="center"></p>
+               
+                <div class="gameTimer"  hidden id="game1Timer"></div>
+            </div>
+            <div id="game1Div" data-role="fieldcontain">
+
+                <canvas class="canvas" id="game1Canvas"></canvas>
                 <!--<img src ="" class="imgDisp">-->
             </div>
 
@@ -42,10 +55,29 @@ Student Number: 991369845-->
         </div>
 
         <div data-role="page" id="game2">
-
+            <div data-role="header" data-fullscreen="true" class="fixed-header" data-id="main-header">
+                <p class="center" id="game2Score"></p>
+                <div class="gameTimer" hidden id="game2Timer"></div>
+            </div>
             <div data-role="fieldcontain">
-                <canvas class=canvas" id="game2Canvas"></canvas>
+                <canvas class="canvas" id="game2Canvas"></canvas>
                 <!--<img src ="" class="imgDisp">-->
+                
+            </div>
+
+
+        </div>
+        <div data-role="page" id="gameover">
+
+            <div data-role="fieldcontain" >
+                <center>    
+                    <h1>GAME OVER</h1>
+                    <h2 id="scoreDisp">Score:</h2>
+                    <div id="startBtn2">
+                        <a id="start2" href="Main.html" class="ui-btn" data-transition="flip">Home</a>
+                        <a id="scores" class="ui-btn" href="Scores.html" data-transition="flip">Scores</a>
+                    </div>
+                </center>
             </div>
 
 

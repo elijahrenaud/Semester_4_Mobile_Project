@@ -9,12 +9,23 @@
     
 }
 
+.fixed-header{
+   opacity:.3;
+  
+    font-size: 1.2em;
+}
+.gameTimer{
+    width: 25%;
+    float: right;
+    padding: 20px;
+    z-index: 0;
+}
 .imgDisp{
   
 }
 
 .center {
-    
+    text-align: center;
 }
 
 #start:hover{
