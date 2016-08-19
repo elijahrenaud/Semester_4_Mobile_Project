@@ -31,6 +31,7 @@
     
     /*List Stuff*/
     .pList{
+        overflow-x: hidden;
         width: 50%;
         min-height: 220px;
         margin-left: auto;

@@ -34,6 +34,7 @@ function parseXML(xml){
     }
     
     drawChart();
+    listScores();
 }
 
 $(window).resize(function(){
@@ -56,7 +57,6 @@ function drawChart(){
     
     var chart = new google.visualization.ColumnChart(document.getElementById('chart_scores'));
     chart.draw(data, options);
-    listScores();
 }
 
 function listScores(){
@@ -72,7 +72,7 @@ function listScores(){
     var ul = "<ol class='pList'>" + li + "</ol>";
     
     //Append to Div
-    $('#sNamesBlock').append(ul);
+    $('#sNamesBlock').remove('.pList').append(ul);
 }
 
 function sortArray(a, b) {
