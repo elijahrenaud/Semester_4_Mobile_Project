@@ -1,3 +1,8 @@
+/*Group Members:
+    Elijah Renaud #991364626
+    Danella Olsen #991369845
+*/
+
 google.charts.load('current', {packages:['corechart', 'bar']});
 google.charts.setOnLoadCallback(init);
 
@@ -73,7 +78,6 @@ function listScores(){
     
     //Append to Div
     $('#sNamesBlock').remove(".pList").append(ul);
-    $('#sNamesBlock').remove('.pList').append(ul);
 }
 
 function sortArray(a, b) {

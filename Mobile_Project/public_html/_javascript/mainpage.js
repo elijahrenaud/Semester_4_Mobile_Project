@@ -1,6 +1,7 @@
-/* 
- * 
- */
+/*Group Members:
+    Elijah Renaud #991364626
+    Danella Olsen #991369845
+*/
 
 $(document).on("pagecreate", "#localstorage", function(){
     
