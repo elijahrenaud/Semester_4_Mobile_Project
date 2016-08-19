@@ -1,0 +1,19 @@
+/* 
+    Created on : Aug 18, 2016, 10:09:45 AM
+    Author     : Elijah Renaud
+*/
+@media screen and (max-width:500px){
+    /*Page Scores*/
+    #sTitleBlock{
+        height: 100px;
+        margin-bottom: 30px;
+    }
+    .sTitle{
+        /*Properties*/
+        width:50%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -30px;
+    }
+    
+}

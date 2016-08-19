@@ -1,0 +1,13 @@
+/* 
+    Created on : Aug 18, 2016, 10:09:07 AM
+    Author     : Elijah Renaud
+*/
+.sTitle{
+    /*Content*/
+    content: url("../_Images/Scores.png");
+}
+#sTitleBlock{
+    background-color: #ffffff;
+    border-style: none;
+}
+

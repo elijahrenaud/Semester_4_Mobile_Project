@@ -1,9 +1,7 @@
 /*DEFAULT*/
 @media screen and (max-width:500px){
     /*Page One*/
-    .mTitle{
-        /*Content*/
-        content: url("../_Images/Logo.png");   
+    .mTitle{ 
         /*Properties*/
         width:50%;
         margin-left: auto;

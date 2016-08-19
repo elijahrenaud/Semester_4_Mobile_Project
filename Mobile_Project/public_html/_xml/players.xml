@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <player name="Bob" score="5"></player>
+    <player name="Cindy" score="2"></player>
+    <player name="Dave" score="10"></player>
+</data>

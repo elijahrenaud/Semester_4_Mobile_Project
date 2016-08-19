@@ -20,23 +20,26 @@ Group Members:
         <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
     </head>
     <body>
-        <!--Page One - Main-->
-        <div data-role="page" id="pageone">
-            <div class="mTitle" id="mTitle"></div>
-            <a id="mBtn" class="ui-btn ui-corner-all" href="#pagetwo" data-transition="flip">Play</a>
-            <a id="mBtn" class="ui-btn ui-corner-all">Scores</a>
-        </div>
-            
-        <!--Page Two - Enter Name-->
-        <div data-role="page" id="pagetwo">
-            <h2 id="ready">Ready?</h2>
-            
-            <div data-role="fieldcontain" id="mNameInput">
-                <label for="mTxtBoxName" id="mLblName">Name: </label>
-                <input type="text" name="mTxtBoxName" id="mTxtBoxName" value=""/>
+        <div id="container">
+            <!--Page One - Main-->
+            <div data-role="page" id="pageone">
+                <div class="mTitle" id="mTitle"></div>
+                <a id="pBtn" class="ui-btn ui-corner-all" href="#pagetwo" data-transition="flip">Play</a>
+                <a id="sBtn" class="ui-btn ui-corner-all">Scores</a>
             </div>
-            
-            <a id="mBtn" class="ui-btn ui-corner-all" href="#pageone" data-transition="flip">Back</a>
+
+            <!--Page Two - Enter Name-->
+            <div data-role="page" id="pagetwo">
+                <h2 id="ready">Ready?</h2>
+
+                <div data-role="fieldcontain" id="mNameInput">
+                    <label for="mTxtBoxName" id="mLblName">Name: </label>
+                    <input type="text" name="mTxtBoxName" id="mTxtBoxName" value=""/>
+                </div>
+
+                <a id="gBtn" class="ui-btn ui-corner-all">Lets Go</a>
+                <a id="bBtn" class="ui-btn ui-corner-all" href="#pageone" data-transition="flip">Back</a>
+            </div>
         </div>
     </body>
 </html>

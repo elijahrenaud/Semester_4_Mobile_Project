@@ -7,9 +7,37 @@ Student Number: 991364626-->
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Style Sheet-->
+        <link rel="stylesheet" href="_CSS/scores.css">
+        <link rel="stylesheet" href="_CSS/scores_desktop.css">
+        <link rel="stylesheet" href="_CSS/scores_mobile.css">
+        <!--JQuery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+        <!--JQuery Mobile-->
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+        <!--Google Charts-->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div data-role="page" id="localstorage" data-theme="a">
+            <header data-role="header" id="sTitleBlock">
+                <div class="sTitle" id="sTitle"></div>
+            </header>
+            <div data-role="content">
+                <section class="ui-grid-a">
+                    <!--Page - Scores-->
+                    <div id="sChartBlock">
+                        <div id="chart_scores"></div>
+                    </div>
+                </section>
+                <section class="ui-grid-b">
+                    <div id="sNamesBlock">
+                        
+                    </div>
+                </section>
+            </div>
+            <script type="text/javascript" src="_javascript/scorespage.js"></script>
+        </div>
     </body>
 </html>
