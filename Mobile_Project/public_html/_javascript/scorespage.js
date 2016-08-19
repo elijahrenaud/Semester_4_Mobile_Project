@@ -57,7 +57,6 @@ function drawChart(){
     
     var chart = new google.visualization.ColumnChart(document.getElementById('chart_scores'));
     chart.draw(data, options);
-    listScores();
 }
 
 function listScores(){
@@ -74,6 +73,7 @@ function listScores(){
     
     //Append to Div
     $('#sNamesBlock').remove(".pList").append(ul);
+    $('#sNamesBlock').remove('.pList').append(ul);
 }
 
 function sortArray(a, b) {
