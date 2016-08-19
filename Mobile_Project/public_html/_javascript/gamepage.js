@@ -90,7 +90,7 @@ $(document).ready(function () {
     var index;
 
     function round(page, trans, rever) {
-        $("#" + page + "Score").text(score);
+        $("#" + page + "Score").text("SCORE: " + score);
         $.mobile.pageContainer.pagecontainer.reverse = rever;
 
         $.mobile.pageContainer.pagecontainer("change", "#" + page, {
@@ -105,6 +105,7 @@ $(document).ready(function () {
         lastEvent = "";
         $("#"+page+"Timer").circletimer({
             onComplete: function () {
+                
                 failure();
             },
             timeout: 5000
@@ -174,12 +175,12 @@ $(document).ready(function () {
         round((page == "game1") ? "game2" : "game1", transitions[index], reverse[index]);
     }
 
-    function failure(timer) {
+    function failure() {
         $("#scoreDisp").text("Score: " + score);
         $.mobile.pageContainer.pagecontainer("change", "#gameover");
 
 
-        clearTimeout(timer);
+     
     }
 
     function drawImage(page, index) {

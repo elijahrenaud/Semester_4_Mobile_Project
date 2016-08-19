@@ -13,13 +13,14 @@
     width: 25%;
     float: right;
     padding: 20px;
+    z-index: 0;
 }
 .imgDisp{
   
 }
 
 .center {
-    
+    text-align: center;
 }
 
 #start:hover{

@@ -41,8 +41,9 @@ Student Number: 991369845-->
         </div>
         <div data-role="page" id="game1" >
             <div data-role="header" data-fullscreen="true" class="fixed-header" data-id="main-header">
-                <p id="game1Score"></p>
-                <div class="gameTimer"  id="game1Timer"></div>
+                <p id="game1Score" class="center"></p>
+               
+                <div class="gameTimer"  hidden id="game1Timer"></div>
             </div>
             <div id="game1Div" data-role="fieldcontain">
 
@@ -55,13 +56,13 @@ Student Number: 991369845-->
 
         <div data-role="page" id="game2">
             <div data-role="header" data-fullscreen="true" class="fixed-header" data-id="main-header">
-                <p id="game2Score"></p>
-                
+                <p class="center" id="game2Score"></p>
+                <div class="gameTimer" hidden id="game2Timer"></div>
             </div>
             <div data-role="fieldcontain">
                 <canvas class="canvas" id="game2Canvas"></canvas>
                 <!--<img src ="" class="imgDisp">-->
-                <div class="gameTimer" id="game2Timer"></div>
+                
             </div>
 
 
