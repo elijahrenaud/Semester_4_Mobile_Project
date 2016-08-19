@@ -5,7 +5,7 @@
 
 .sTitle{
     /*Content*/
-    content: url("../_Images/Scores.png");
+    content: url("../_images/Scores.png");
 }
 #sTitleBlock{
     background-color: #ffffff;
@@ -14,7 +14,7 @@
 
 .sPlayers{
     /*Content*/
-    content: url("../_Images/Players.png");
+    content: url("../_images/Players.png");
 }
 
 .pList{
