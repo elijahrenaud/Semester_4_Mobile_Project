@@ -1,6 +1,13 @@
 /*DEFAULT*/
 @media screen and (max-width:500px){
     /*Page One*/
+    /*Page Scores*/
+    body,html{
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    
+    
     .mTitle{ 
         /*Properties*/
         width:50%;
@@ -9,7 +16,7 @@
         padding-top:40px;
         padding-bottom: 250px;
     }
-
+    
     #mBtn{
         /*Properties*/
         width:40%;
@@ -44,5 +51,14 @@
         padding-bottom: 250px;
         /*Style*/
         border:none;
+    }
+    
+    #lblWarning{    
+        /*Properties*/
+        text-align: center;
+        font-size: 150%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -31px;
     }
 }

@@ -3,10 +3,16 @@
     content: url("../_Images/Logo.png");  
 }
 
+#lblWarning{
+    /*Properties*/
+    display:none;
+    /*Style*/
+    font-weight: bold;
+    color:#ff0000;
+}
+
 .round-centre{
-    border-radius: 50%;
-   
-    
+    border-radius: 50%; 
 }
 
 .fixed-header{

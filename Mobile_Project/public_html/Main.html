@@ -25,7 +25,7 @@ Group Members:
             <div data-role="page" id="pageone">
                 <div class="mTitle" id="mTitle"></div>
                 <a id="pBtn" class="ui-btn ui-corner-all" href="#pagetwo" data-transition="flip">Play</a>
-                <a id="sBtn" class="ui-btn ui-corner-all">Scores</a>
+                <a id="sBtn" class="ui-btn ui-corner-all" data-ajax="false" href="Scores.html">Scores</a>
             </div>
 
             <!--Page Two - Enter Name-->
@@ -36,10 +36,11 @@ Group Members:
                     <label for="mTxtBoxName" id="mLblName">Name: </label>
                     <input type="text" name="mTxtBoxName" id="mTxtBoxName" value=""/>
                 </div>
-
+                <div id="lblWarning">Please Enter a Name!</div>
                 <a id="gBtn" class="ui-btn ui-corner-all">Lets Go</a>
                 <a id="bBtn" class="ui-btn ui-corner-all" href="#pageone" data-transition="flip">Back</a>
             </div>
         </div>
+        <script type="text/javascript" src="_javascript/mainpage.js"></script>
     </body>
 </html>

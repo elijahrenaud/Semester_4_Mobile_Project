@@ -11,3 +11,11 @@
     border-style: none;
 }
 
+.sPlayers{
+    /*Content*/
+    content: url("../_Images/Players.png");
+}
+
+.pList{
+    overflow: scroll;
+}

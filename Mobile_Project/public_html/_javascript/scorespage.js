@@ -62,12 +62,24 @@ function drawChart(){
 function listScores(){
     //Array to sort players from XML
     var arrSize = dataSet.length;
-    var sorted = new Array(arrSize).fill(0);
+    var li = "";
+    dataSet.sort(sortArray);
     
-    alert(dataSet[2]);
+    //Make List
+    for(var i = 0; i < arrSize; i++){
+        li += "<li class='pItem'>" + dataSet[i] + "</li>"; 
+    };
+    var ul = "<ol class='pList'>" + li + "</ol>";
     
-    for(var i = 0; i > arrSize; i++){
-        //if(sorted[i] < dataSet)
+    //Append to Div
+    $('#sNamesBlock').append(ul);
+}
+
+function sortArray(a, b) {
+    if (b[1] === a[1]) {
+        return 1;
     }
-    
+    else {
+        return (b[1] < a[1]) ? -1 : 1;
+    }
 }
