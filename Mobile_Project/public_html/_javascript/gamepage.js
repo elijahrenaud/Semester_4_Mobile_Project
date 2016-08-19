@@ -49,6 +49,7 @@ function playAudio(filename) {
 
 $(document).ready(function () {
     center($("#startBtn"), 100, 100);
+
     $.ajax({
         type: "GET",
         url: "_xml/mobile_events.xml",
@@ -103,74 +104,28 @@ $(document).ready(function () {
 
         drawImage(page, index);
         lastEvent = "";
-        $("#"+page+"Timer").circletimer({
+        $("#" + page + "Timer").circletimer({
             onComplete: function () {
-                
+
                 failure();
             },
-            timeout: 5000
+            timeout: 2000
         });
-        
-       $("#"+page+"Timer").circletimer("start");
-/*
-        var timeout = setTimeout(function () {
-            failure(timeout);
 
-        }, 2000);
-*/
+        $("#" + page + "Timer").circletimer("start");
+
         $(document).one(events[index], function () {
             //event.stopImmediatePropagation();
-            success( page);
+            success(page);
 
         });
-        /*
-         $(document).unbind().one({
-         swipeleft: function () {
-         event.stopImmediatePropagation();
-         events[index] == "swipeleft" ? success(timeout) : failure(timeout)
-         },
-         swiperight: function () {
-         event.stopImmediatePropagation();
-         events[index] == "swiperight" ? success(timeout) : failure(timeout)
-         },
-         tap: function () {
-         //event.stopImmediatePropagation();
-         events[index] == "tap" ? success(timeout) : failure(timeout)
-         },
-         taphold: function () {
-         //event.stopImmediatePropagation();
-         events[index] == "taphold" ? success(timeout) : failure(timeout)
-         },
-         });
-         */
-        /*
-         $(document).on("swipeleft", function(){
-         event.stopImmediatePropagation();
-         events[index] == "swipeleft" ? success(timeout, page) : failure(timeout);
-         });
-         
-         $(document).on("swiperight", function(){
-         event.stopImmediatePropagation();
-         events[index] == "swiperight" ? success(timeout, page) : failure(timeout);
-         });
-         
-         $(document).on("tap", function(){
-         event.stopImmediatePropagation();
-         events[index] == "tap" ? success(timeout, page) : failure(timeout);
-         });
-         
-         $(document).on("taphold", function(){
-         
-         events[index] == "taphold" ? success(timeout, page) : failure(timeout);
-         });
-         
-         */
+
     }
 
     function success(page) {
         ++score;
-       // clearTimeout(timer);
-       $("#"+page+"Timer").circletimer("stop");
+        // clearTimeout(timer);
+        $("#" + page + "Timer").circletimer("stop");
         playAudio('_sounds\\beep1.wav');
         round((page == "game1") ? "game2" : "game1", transitions[index], reverse[index]);
     }
@@ -178,9 +133,17 @@ $(document).ready(function () {
     function failure() {
         $("#scoreDisp").text("Score: " + score);
         $.mobile.pageContainer.pagecontainer("change", "#gameover");
+        
+        /*
+         * 
+         * NOTE: The score should be saved in the XML file, the username will be pulled
+         * up from localstorage and it will saved in the XML document in the format: 
+         * 
+         * <player name="somename" score="9"></player>
+         * 
+         */
 
 
-     
     }
 
     function drawImage(page, index) {
@@ -219,6 +182,7 @@ $(document).ready(function () {
     }
 
 });
+
 $(window).resize(function () {
     center($("#startBtn"), 100, 100);
     center($("#countdown"), 100, 100);

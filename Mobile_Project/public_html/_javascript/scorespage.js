@@ -34,6 +34,7 @@ function parseXML(xml){
     }
     
     drawChart();
+    listScores();
 }
 
 $(window).resize(function(){
@@ -72,7 +73,7 @@ function listScores(){
     var ul = "<ol class='pList'>" + li + "</ol>";
     
     //Append to Div
-    $('#sNamesBlock').append(ul);
+    $('#sNamesBlock').remove(".pList").append(ul);
 }
 
 function sortArray(a, b) {
